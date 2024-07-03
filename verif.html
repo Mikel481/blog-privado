@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="verif.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificación</title>
+  <link rel="stylesheet" href="verif.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación</title>
 </head>
+
 <body>
 
+  <script>
 
-  Verificando...
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const usuario = urlParams.get('Usuario');
+      const contrasena = urlParams.get('Contraseña');
 
-    <script src="verif.js"></script>
+      // URL del archivo JSON con los usuarios y contraseñas
+      const urlUsuarios = 'login.json';
+
+      // Utiliza fetch para obtener los datos del archivo JSON
+      fetch(urlUsuarios)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al obtener los datos de usuarios');
+          }
+          return response.json();
+        })
+        .then(usuariosValidos => {
+          // Busca si el usuario y la contraseña están en el array de usuarios válidos
+          const usuarioValido = usuariosValidos.find(usuarioObj =>
+            usuarioObj.usuario === usuario && usuarioObj.contrasena === contrasena
+          );
+
+          if (usuarioValido) {
+            alert('Login exitoso');
+            window.location.href = 'dashboard.html';
+          } else {
+            alert('Usuario o contraseña incorrectos');
+            window.location.href = 'login.html';
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Error al obtener los datos de usuarios');
+          window.location.href = 'index.html';
+        });
+    });
+
+
+  </script>
 
 </body>
+
 </html>
