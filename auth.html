@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="verif.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verificación</title>
@@ -15,10 +14,10 @@
     document.addEventListener('DOMContentLoaded', function () {
       const urlParams = new URLSearchParams(window.location.search);
       const usuario = urlParams.get('Usuario');
-      const contrasena = urlParams.get('Contraseña');
+      const contrasena = urlParams.get('Contrasena');
 
       // URL del archivo JSON con los usuarios y contraseñas
-      const urlUsuarios = 'login.json';
+      const urlUsuarios = 'users.json';
 
       // Utiliza fetch para obtener los datos del archivo JSON
       fetch(urlUsuarios)
@@ -35,10 +34,8 @@
           );
 
           if (usuarioValido) {
-            alert('Login exitoso');
-            window.location.href = 'dashboard.html';
+            window.location.href = 'blog.html';
           } else {
-            alert('Usuario o contraseña incorrectos');
             window.location.href = 'login.html';
           }
         })
