@@ -1,0 +1,20 @@
+body {
+
+    background-image: url(https://i.pinimg.com/564x/fd/03/57/fd0357e3520b39ee84896d794146ed74.jpg);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    background-repeat: no-repeat;
+}.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
